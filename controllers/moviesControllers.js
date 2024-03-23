@@ -1,12 +1,14 @@
-import * as moviesServices from "../services/moviesServices.js";
+// import * as moviesServices from "../services/moviesServices.js";
 
+
+import { getAllMovies } from "../services/moviesServices.js";
 import HttpError from "../helpers/HttpError.js";
 
 // import { movieAddSchema, movieUpdateSchema } from "../schemas/moviesSchemas.js";
 
 const getAll = async (req, res, next) => {
     // try {
-        const result = await moviesServices.getAllMovies();
+        const result = await getAllMovies();
 console.log("Success")
         res.json(result);
     // }

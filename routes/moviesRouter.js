@@ -20,7 +20,7 @@ export default moviesRouter;
 
 
 // ***********************************
-// У ментора так6
+// У ментора так
 
 // import { movieAddSchema,movieUpdateSchema } from "../schemas/moviesSchemas";
 
