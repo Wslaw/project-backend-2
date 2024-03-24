@@ -6,7 +6,7 @@ const moviesRouter = express.Router();
 
 moviesRouter.get("/", moviesControllers.getAll);
 
-// moviesRouter.get("/:id", moviesControllers.getById);
+moviesRouter.get("/:id", moviesControllers.getById);
 
 // moviesRouter.post("/", moviesControllers.add);
 

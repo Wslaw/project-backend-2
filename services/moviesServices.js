@@ -4,7 +4,7 @@ import Movie from "../models/Movie.js";
 export const getAllMovies = () => Movie.find();
 
 
-
+export const getMovieById = (id) => Movie.findById(id);
 
 
 

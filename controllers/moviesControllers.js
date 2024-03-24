@@ -1,15 +1,13 @@
-// import * as moviesServices from "../services/moviesServices.js";
+import * as moviesServices from "../services/moviesServices.js";
 
-
-import { getAllMovies } from "../services/moviesServices.js";
 import HttpError from "../helpers/HttpError.js";
 
 // import { movieAddSchema, movieUpdateSchema } from "../schemas/moviesSchemas.js";
 
 const getAll = async (req, res, next) => {
     // try {
-        const result = await getAllMovies();
-console.log("Success")
+        const result = await moviesServices.getAllMovies();
+// console.log("Success")
         res.json(result);
     // }
     // catch (error) {
@@ -18,26 +16,26 @@ console.log("Success")
     // }
 }
 
-// const getById = async (req, res, next) => {
-//     try {
-//         const { id } = req.params;
-//         const result = await moviesServices.getMovieById(id);
-//         if (!result) {
-//             throw HttpError(404, `Movie with id=${id} not found`);
-//             // const error = new Error(`Movie with id=${id} not found`);
-//             // error.status = 404;
-//             // throw error;
-//             // return res.status(404).json({
-//             //     message: `Movie with id=${id} not found`
-//             // })
-//         }
+const getById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const result = await moviesServices.getMovieById(id);
+        if (!result) {
+            throw HttpError(404, `Movie with id=${id} not found`);
+            // const error = new Error(`Movie with id=${id} not found`);
+            // error.status = 404;
+            // throw error;
+            // return res.status(404).json({
+            //     message: `Movie with id=${id} not found`
+            // })
+        }
 
-//         res.json(result);
-//     }
-//     catch (error) {
-//         next(error);
-//     }
-// }
+        res.json(result);
+    }
+    catch (error) {
+        next(error);
+    }
+}
 
 // const add = async(req, res, next)=> {
 //     try {
@@ -94,7 +92,7 @@ console.log("Success")
 
 export default {
     getAll,
-    // getById,
+    getById,
     // add,
     // updateById,
     // deleteById,
