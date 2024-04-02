@@ -1,7 +1,12 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
 
 import * as authServices from "../services/authServices.js";
 import HttpError from "../helpers/HttpError.js";
+
+
+const { JWT_SECRET } = process.env;
 
 const signup = async (req, res, next) => {
   try {
@@ -33,10 +38,15 @@ const signin = async (req, res) => {
   const passwordCompare = await bcrypt.compare(password, user.password);
   if (!passwordCompare) {
     throw HttpError(401, "Email or password invalid");
-    }
-    
-    const token = "123.123.123";
-
+  }
+  
+  const { _id: id } = user;
+  const payload = {
+    id
+  };
+      
+    const token = jwt.sign(payload, JWT_SECRET, {expiresIn:"23h"});
+  console.log(token);
     res.json({
         token,
     })

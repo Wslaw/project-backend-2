@@ -3,34 +3,17 @@ import morgan from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
 import "dotenv/config";
-
-
-// ****************************************************
 import bcrypt from "bcrypt";
-
-
-const hashPassword = async (password) => {
-  const result = await bcrypt.hash(password, 10);
-  // console.log(result);                                                 hash
-  const compareResult1 = await bcrypt.compare(password, result);
-  console.log(compareResult1);
-  const compareResult2 = await bcrypt.compare("123457", result);
-  
-  console.log(compareResult2);
-  
-};
-hashPassword("123456");
-// *******************************************************
-
-
-
-
-
-
-
 
 import authRouter from "./routes/authRouter.js";
 import contactsRouter from "./routes/contactsRouter.js";
+
+
+
+
+
+
+
 
 
 
